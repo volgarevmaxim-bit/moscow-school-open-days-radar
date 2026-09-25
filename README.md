@@ -24,4 +24,4 @@ Python 3.11 · Telethon (upstream-чтение + downstream-отправка) ·
 
 ## Статус
 
-🏗 Планирование. Реализация не начата — ждём согласования плана с пользователем.
+🅿️ Паркинг (с 2026-09-25): реализация приостановлена до рефакторинга дата-флоу upstream schools-map-mathex — см. [`docs/ТЗ_аудит_schools-map-mathex_v1.md`](docs/ТЗ_аудит_schools-map-mathex_v1.md). При возобновлении — обновить снапшот `data/raw/` и SHA в `UPSTREAM.md`.
