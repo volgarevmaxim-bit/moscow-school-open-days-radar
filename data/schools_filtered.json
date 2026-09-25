@@ -531,12 +531,9 @@
   {
     "id": "cambridge-international-school",
     "name": "Cambridge International School",
-    "included": true,
+    "included": false,
     "kind": "blue",
-    "kind_match": "blue",
-    "kind_source": "rule:legacy-build_data.py BLUE\\GREEN (Cambridge International School)",
-    "address": "фестивальная ул 7а",
-    "mathex_url": null
+    "reason": "manual exclusion (geo review)"
   },
   {
     "id": "heritage-international-school",
@@ -593,12 +590,9 @@
   {
     "id": "brookes-moscow-international-school",
     "name": "Brookes Moscow International School",
-    "included": true,
+    "included": false,
     "kind": "blue",
-    "kind_match": "blue",
-    "kind_source": "rule:legacy-build_data.py BLUE\\GREEN (Brookes Moscow)",
-    "address": "лазоревый проезд 7",
-    "mathex_url": null
+    "reason": "manual exclusion (geo review)"
   },
   {
     "id": "английский-детский-сад-mcs-school",
@@ -610,12 +604,9 @@
   {
     "id": "mcs-school-magic-castle-school",
     "name": "MCS School / Magic Castle School",
-    "included": true,
+    "included": false,
     "kind": "blue",
-    "kind_match": "blue",
-    "kind_source": "rule:content-admission (MCS School / Magic Castle School in schools_content.table @830f792)",
-    "address": "пер чернышевского 4 стр 1",
-    "mathex_url": null
+    "reason": "manual exclusion (geo review)"
   },
   {
     "id": "тор-it-school",

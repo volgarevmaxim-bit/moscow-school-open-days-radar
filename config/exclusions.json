@@ -5,5 +5,10 @@
         "Школа «Президент»",
         "Павловская гимназия",
         "Wunderpark International School"
+    ],
+    "geo_review_exclusions": [
+        "Cambridge International School",
+        "Brookes Moscow International School",
+        "MCS School / Magic Castle School"
     ]
 }

@@ -4,7 +4,7 @@ stage01_filter_registry — Этап 1 (Фаза 1): фильтрация рее
 Вход:  data/raw/entities.json  (канон)
 Выходы:
   data/schools_filtered.json       — полный лог решений (84 записи)
-  data/intermediate/schools_excluded.csv  — 5 ручных исключений
+  data/intermediate/schools_excluded.csv  — 8 ручных исключений (5 ТЗ §3.1 + 3 гео-ревью)
   backlog/v2_non_blue_schools.csv         — 60 не-blue неисключённых
 
 Запуск: PYTHONPATH=src python -m radar.stage01_filter_registry
@@ -29,10 +29,10 @@ OUT_BACKLOG = REPO_ROOT / "backlog" / "v2_non_blue_schools.csv"
 EXPECTED_MD5 = "e511b584f0f5ba3212b847b854efa883"
 EXPECTED_COUNT = 84
 EXPECTED_BLUE = 22
-EXPECTED_INCLUDED = 19
+EXPECTED_INCLUDED = 16
 
-# blue-исключения: 3, green-цели: 2 → итого 5 manual exclusion
-EXPECTED_MANUAL_EXCLUSIONS = 5
+# blue-исключения: 3 (ТЗ §3.1) + 3 (гео-ревью 2026-09-25), green-цели: 2 → итого 8
+EXPECTED_MANUAL_EXCLUSIONS = 8
 EXPECTED_RED_EXCLUDED = 53
 EXPECTED_GREEN_EXCLUDED = 7  # green, не являющиеся целями исключений
 
@@ -47,7 +47,7 @@ def normalize_name(name: str) -> str:
     # Слово "и" как разделитель → пробел (и между Pre-Nursery и Nursery)
     s = re.sub(r"\bи\b", " ", s)
     # Скобки, двоеточие, запятая, тире → пробел
-    s = re.sub(r"[\(\)\[\]\{\}:;,—–-]", " ", s)
+    s = re.sub(r"[\(\)\[\]\{\}:;,/—–-]", " ", s)
     # Схлопнуть пробелы
     s = re.sub(r"\s+", " ", s).strip()
     return s
@@ -64,10 +64,11 @@ def read_canon(path: pathlib.Path) -> dict:
     return json.loads(text)
 
 
-def read_exclusions_config(path: pathlib.Path) -> list[str]:
-    """Прочитать список имён для ручного исключения."""
+def read_exclusions_config(path: pathlib.Path) -> dict[str, list[str]]:
+    """Прочитать группы ручных исключений: ТЗ §3.1 + гео-ревью."""
     data = json.loads(path.read_text(encoding="utf-8"))
-    return data["manual_exclusions"]
+    return {key: list(data.get(key, [])) for key in
+            ("manual_exclusions", "geo_review_exclusions")}
 
 
 # ── md5 ──────────────────────────────────────────────────────────────────────
@@ -196,11 +197,14 @@ def main() -> None:
     )
     print(f"[2] Канон: {len(entities)} сущностей, blue={blue_count}")
 
-    # 3. Чтение конфига и матчинг исключений
-    exclusion_names = read_exclusions_config(EXCLUSIONS_CONFIG)
+    # 3. Чтение конфига и матчинг исключений (ТЗ §3.1 + гео-ревью)
+    groups = read_exclusions_config(EXCLUSIONS_CONFIG)
+    targets = [(g, n) for g, ns in groups.items() for n in ns]
+    group_of = {n: g for g, n in targets}
+    exclusion_names = [n for _, n in targets]
     print(f"[3] Ручные исключения ({len(exclusion_names)}):")
-    for en in exclusion_names:
-        print(f"    - {en}")
+    for g, n in targets:
+        print(f"    - [{g}] {n}")
 
     matches = match_exclusions(exclusion_names, entities)
     for target, ent in matches.items():
@@ -227,21 +231,21 @@ def main() -> None:
             included_entries.append(entry)
             all_entries.append(entry)
         elif eid in excluded_ids:
-            # Ручное исключение
-            reason = "manual exclusion"
-            excluded_entry = build_excluded_entry(e, reason)
-            all_entries.append(excluded_entry)
-
-            # Определяем вердикт для CSV
+            # Ручное исключение: ТЗ §3.1 или гео-ревью
             target_name = None
             for t, ent in matches.items():
                 if ent["id"] == eid:
                     target_name = t
                     break
-            if kind == "blue":
-                verdict = "excluded; blue"
+            if group_of.get(target_name, "") == "geo_review_exclusions":
+                reason = "manual exclusion (geo review)"
+                verdict = "excluded; blue (geo review)"
             else:
-                verdict = "excluded; green (out by kind anyway)"
+                reason = "manual exclusion"
+                verdict = ("excluded; blue" if kind == "blue"
+                           else "excluded; green (out by kind anyway)")
+            excluded_entry = build_excluded_entry(e, reason)
+            all_entries.append(excluded_entry)
             excluded_rows.append({
                 "exclusion_target": target_name,
                 "canon_id": eid,
@@ -279,13 +283,14 @@ def main() -> None:
 
     # Счётчики для отладки
     cnt_manual_exclusion = sum(1 for e in all_entries if not e["included"] and e.get("reason") == "manual exclusion")
+    cnt_geo_exclusion = sum(1 for e in all_entries if not e["included"] and e.get("reason") == "manual exclusion (geo review)")
     cnt_red = sum(1 for e in all_entries if not e["included"] and "kind=red" in e.get("reason", ""))
     cnt_green_excluded = sum(1 for e in all_entries if not e["included"] and "kind=green" in e.get("reason", ""))
-    total_check = len(included_entries) + cnt_manual_exclusion + cnt_red + cnt_green_excluded
+    total_check = len(included_entries) + cnt_manual_exclusion + cnt_geo_exclusion + cnt_red + cnt_green_excluded
 
     assert total_check == EXPECTED_COUNT, (
         f"Контрольная сумма не сходится: {total_check} != {EXPECTED_COUNT} "
-        f"(included={len(included_entries)}, manual={cnt_manual_exclusion}, "
+        f"(included={len(included_entries)}, manual={cnt_manual_exclusion}, geo={cnt_geo_exclusion}, "
         f"red={cnt_red}, green={cnt_green_excluded})"
     )
 
@@ -323,7 +328,8 @@ def main() -> None:
     print("СВОДКА")
     print(f"  Blue в каноне:   {blue_count}")
     print(f"  Включено (blue): {len(included_entries)}")
-    print(f"    − blue исключения: {sum(1 for r in excluded_rows if r['kind']=='blue')}")
+    print(f"    − blue исключения (ТЗ §3.1):   {sum(1 for r in excluded_rows if r['kind']=='blue' and 'geo' not in r['verdict'])}")
+    print(f"    − blue исключения (гео-ревью): {sum(1 for r in excluded_rows if 'geo' in r['verdict'])}")
     print(f"    − green-цели:      {sum(1 for r in excluded_rows if r['kind']=='green')}")
     print(f"  Отклонено red:   {cnt_red}")
     print(f"  Отклонено green: {cnt_green_excluded}")
