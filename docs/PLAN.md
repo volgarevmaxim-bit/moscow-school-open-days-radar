@@ -175,7 +175,7 @@ PYTHONPATH=src python -m radar.stage02_match_channels
    - По умолчанию: первый запуск → `last_seen_id` = текущий максимум сообщений канала (дефолт №3).
 
 4.2. GitHub Actions workflow: `.github/workflows/daily_read.yml`
-   - Trigger: cron `0 17 * * *` (дефолт №2; 20:00 МСК).
+   - Trigger: cron `0 17 * * *` (подтверждено владельцем 2026-09-25; 20:00 МСК).
    - Шаги:
      1. Checkout репозитория.
      2. Установка Python + зависимостей (`pip install -r requirements.txt`).
@@ -250,7 +250,7 @@ PYTHONPATH=src python -m radar.stage02_match_channels
    - Если текст >4096 символов — разделить на части и отправить последовательно (дефолт №7).
 
 6.3. GitHub Actions workflow: `.github/workflows/weekly_summary.yml`
-   - Trigger: cron `0 18 * * 0` (воскресенье 21:00 МСК, дефолт №2).
+   - Trigger: cron `0 18 * * 0` (воскресенье 21:00 МСК; слот по умолчанию, финализация при реализации).
    - Шаги:
      1. Checkout.
      2. Установка зависимостей.
@@ -364,7 +364,7 @@ openhouse-radar/
 | 2 | **Точный model id DeepSeek V4.1 Flash** — решено 2026-09-25: ProxyAPI, `deepseek/deepseek-v4.1-flash` (`config/llm.json`, smoke OK) | `deepseek/deepseek-v4.1-flash` | закрыто |
 | 3 | **Telegram api_id/api_hash:** есть ли уже зарегистрированное приложение на https://my.telegram.org? | (пусто) | Если нет — владельцу зарегистрировать |
 | 4 | **Artifacts vs Cache для state:** дефолт — Artifacts (cache вытесняется за ~7 дней). Устраивает? | Artifacts, 90 дней | Artifacts, Cache (потеря last_seen_id при простое), или S3/бакет |
-| 5 | **Расписание cron:** дефолт daily 17:00 UTC (20:00 МСК), weekly вс 18:00 UTC (21:00 МСК). | daily 17:00 UTC, weekly вс 18:00 UTC | Любое время в off-peak окне DeepSeek (01:00–04:00 / 06:00–10:00 UTC по будням — избегать; предпочтительно 20:00–23:00 МСК) |
+| 5 | **Расписание cron:** дефолт daily 17:00 UTC (20:00 МСК), weekly вс 18:00 UTC (21:00 МСК). | daily 17:00 UTC, weekly вс 18:00 UTC | daily 20:00 МСК — подтверждено владельцем 2026-09-25; weekly вс 21:00 МСК — слот по умолчанию (финализация при реализации)|
 | 6 | **Глубина первого запуска:** дефолт — только новые сообщения (last_seen_id = current max). Нужен ли «холодный старт» с архивом? | Только новые | **(a)** Только новые; **(b)** архив за 1 месяц (для первой сводки); **(c)** за 1 год (для калибровки) |
 
 ---
