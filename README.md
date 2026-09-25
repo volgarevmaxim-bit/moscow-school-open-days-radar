@@ -12,7 +12,7 @@ Telegram-каналы школ из реестра → LLM-классифика�
 
 - ТЗ (v4, финал уточнений): [`docs/ТЗ_радар_дней_открытых_дверей_v4.md`](docs/ТЗ_радар_дней_открытых_дверей_v4.md)
 - План работ: [`docs/PLAN.md`](docs/PLAN.md)
-- Handoff: [`HANDOFF.md`](HANDOFF.md)
+- Handoff: `HANDOFF.md` (локальный, вне git — в .gitignore)
 
 ## Источники данных
 
