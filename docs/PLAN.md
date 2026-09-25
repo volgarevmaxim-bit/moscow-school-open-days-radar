@@ -30,8 +30,9 @@
 
 ### Фаза 1. Разбор реестра (исключения + kind-сопоставление + blue-only)
 
-> **Обновление 2026-09-25 (после рефакторинга upstream):** вход Этапа 1 — `data/raw/entities.json` (канон: 84 сущности, `kind`/`kind_source` у 100%). Матчинг CSV↔places упразднён — ТЗ п.3.2 закрывается чтением канона. Исключения ТЗ п.3.1 применяются к канону; эффективный реестр = 19 школ (22 blue − «Президент»/Павловская/Wunderpark; дошкольные Brookes Early Years и Cambridge — green-сущности, отсекаются сами). На ревью зоны интереса при Этапе 1: Cambridge International School, Brookes Moscow International, MCS/Magic Castle, французский лицей Дюма. Текст фазы ниже сохранён для истории.
+> **Обновление 2026-09-25 (после рефакторинга upstream):** вход Этапа 1 — `data/raw/entities.json` (канон: 84 сущности, `kind`/`kind_source` у 100%). Матчинг CSV↔places упразднён — ТЗ п.3.2 закрывается чтением канона. Исключения ТЗ п.3.1 применяются к канону; эффективный реестр = 19 школ (22 blue − «Президент»/Павловская/Wunderpark; дошкольные Brookes Early Years и Cambridge — green-сущности, отсекаются сами). Зона интереса на ревью при Этапе 1 (4 международные школы) закрыта решением владельца — см. запись о гео-гейте ниже. Текст фазы ниже сохранён для истории.
 > **Выполнено 2026-09-25 (субагент deleg_00eca056 + независимая верификация оркестратора, ~45 проверок):** `config/exclusions.json` (5 целей дословно из ТЗ §3.1) + `src/radar/stage01_filter_registry.py` → `data/schools_filtered.json` (84 записи: 19 included / 5 manual exclusion / 53 red / 7 green; порядок = канон; идемпотентность по md5), `data/intermediate/schools_excluded.csv` (5 строк), `backlog/v2_non_blue_schools.csv` (60 строк: 51 default + 2 priority — Ломоносовская «Интек» и «Зеленый мыс» — + 7 kindergarten; имя файла отличается от карты ниже). Все 5 целей §3.1 найдены в каноне (Brookes Early Years и дошкольные Cambridge — green-сущности с parent_id). Gate: ревью владельца.
+> **Гео-гейт закрыт 2026-09-25 (решение владельца):** дополнительно исключены 3 международные школы — Cambridge International School, Brookes Moscow International, MCS/Magic Castle (`config/exclusions.json`, группа `geo_review_exclusions`). Французский лицей Дюма оставлен: канал точно есть и двуязычный (FR/RU) — обязательный тест-кейс классификатора и суммаризатора (Фазы 5–6). Эффективный реестр v1 = **16 школ**. LLM-шлюз зафиксирован: ProxyAPI (`config/llm.json`), модель `deepseek/deepseek-v4.1-flash`, smoke-проверка пройдена (`scripts/smoke_proxyapi.py`, 200 OK).
 
 **Задачи:**
 
@@ -209,7 +210,7 @@ PYTHONPATH=src python -m radar.stage02_match_channels
 
 5.1. Реализовать `src/radar/classifier.py`:
    - Тонкий OpenAI-совместимый врапер на httpx (дефолт №10).
-   - Модель/base_url из окружения: `DEEPSEEK_API_KEY`, `DEEPSEEK_BASE_URL`, `DEEPSEEK_MODEL`.
+   - Модель/base_url — из `config/llm.json` (ProxyAPI: `https://api.proxyapi.ru/v1`, `deepseek/deepseek-v4.1-flash`); ключ — из окружения `PROXYAPI_KEY` (локально dotenv, в CI GitHub Secrets).
    - Мок-режим для тестов (читать из файла-фикстуры).
 
 5.2. Промпт (версия из Фазы 3) — строгая JSON-схема:
@@ -281,9 +282,7 @@ PYTHONPATH=src python -m radar.stage02_match_channels
 | `TG_API_ID` | Telegram API ID (https://my.telegram.org) |
 | `TG_API_HASH` | Telegram API Hash |
 | `TG_SESSION_STRING` | Залогиненная сессия (из `scripts/login_session.py`) |
-| `DEEPSEEK_API_KEY` | API-ключ DeepSeek |
-| `DEEPSEEK_BASE_URL` | (если через прокси, по умолч. `https://api.deepseek.com`) |
-| `DEEPSEEK_MODEL` | Точный model id (см. Открытые вопросы №2) |
+| `PROXYAPI_KEY` | Ключ шлюза ProxyAPI (base_url и model — в `config/llm.json`; вопрос №2 закрыт) |
 
 7.2. Alter-ego аккаунт:
    - Использовать отдельный Telegram-аккаунт (не основной владельца) для всех операций.
@@ -362,7 +361,7 @@ openhouse-radar/
 | № | Вопрос | Дефолт | Варианты |
 |---|--------|--------|---------|
 | 1 | **Масштаб v1:** blue-only буквально = 1 школа («Интеграция XXI век», forbes-high-02); blue-объекты places.json «Царицыно» №548 и «ТОР IT SCHOOL» в CSV отсутствуют. Что считаем реестром для v1? | (пусто) | **(a)** принять 1 школу как чистый MVP; **(b)** добавить 2 blue-объекта из places.json, отсутствующих в CSV (реестр = 3 школы, ведём своим файлом, CSV не трогаем); **(c)** пересмотреть kind-метки в places.json (владелец карты) и повторить Этап 1 |
-| 2 | **Точный model id DeepSeek V4.1 Flash:** вендор может называть модель иначе (напр. `deepseek-chat`, `deepseek-v4.1-flash`). | (пусто) | Владелец уточняет в документации DeepSeek и фиксирует в `DEEPSEEK_MODEL` |
+| 2 | **Точный model id DeepSeek V4.1 Flash** — решено 2026-09-25: ProxyAPI, `deepseek/deepseek-v4.1-flash` (`config/llm.json`, smoke OK) | `deepseek/deepseek-v4.1-flash` | закрыто |
 | 3 | **Telegram api_id/api_hash:** есть ли уже зарегистрированное приложение на https://my.telegram.org? | (пусто) | Если нет — владельцу зарегистрировать |
 | 4 | **Artifacts vs Cache для state:** дефолт — Artifacts (cache вытесняется за ~7 дней). Устраивает? | Artifacts, 90 дней | Artifacts, Cache (потеря last_seen_id при простое), или S3/бакет |
 | 5 | **Расписание cron:** дефолт daily 17:00 UTC (20:00 МСК), weekly вс 18:00 UTC (21:00 МСК). | daily 17:00 UTC, weekly вс 18:00 UTC | Любое время в off-peak окне DeepSeek (01:00–04:00 / 06:00–10:00 UTC по будням — избегать; предпочтительно 20:00–23:00 МСК) |

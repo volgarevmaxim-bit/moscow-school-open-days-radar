@@ -1,0 +1,7 @@
+{
+    "provider": "proxyapi",
+    "base_url": "https://api.proxyapi.ru/v1",
+    "model": "deepseek/deepseek-v4.1-flash",
+    "key_env": "PROXYAPI_KEY",
+    "notes": "OpenAI-совместимый шлюз ProxyAPI. Цены с НДС: ввод 41.05 руб/1М токенов, вывод 168.42 руб/1М, кэш-чтение 0.81 руб/1М; max output 393K. Поддерживает structured outputs, function calling, streaming, reasoning, prompt caching. Ключ — только в окружении (локально dotenv, в CI GitHub Secrets), в файлах репо не хранится."
+}
