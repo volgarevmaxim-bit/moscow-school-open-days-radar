@@ -31,6 +31,7 @@
 ### Фаза 1. Разбор реестра (исключения + kind-сопоставление + blue-only)
 
 > **Обновление 2026-09-25 (после рефакторинга upstream):** вход Этапа 1 — `data/raw/entities.json` (канон: 84 сущности, `kind`/`kind_source` у 100%). Матчинг CSV↔places упразднён — ТЗ п.3.2 закрывается чтением канона. Исключения ТЗ п.3.1 применяются к канону; эффективный реестр = 19 школ (22 blue − «Президент»/Павловская/Wunderpark; дошкольные Brookes Early Years и Cambridge — green-сущности, отсекаются сами). На ревью зоны интереса при Этапе 1: Cambridge International School, Brookes Moscow International, MCS/Magic Castle, французский лицей Дюма. Текст фазы ниже сохранён для истории.
+> **Выполнено 2026-09-25 (субагент deleg_00eca056 + независимая верификация оркестратора, ~45 проверок):** `config/exclusions.json` (5 целей дословно из ТЗ §3.1) + `src/radar/stage01_filter_registry.py` → `data/schools_filtered.json` (84 записи: 19 included / 5 manual exclusion / 53 red / 7 green; порядок = канон; идемпотентность по md5), `data/intermediate/schools_excluded.csv` (5 строк), `backlog/v2_non_blue_schools.csv` (60 строк: 51 default + 2 priority — Ломоносовская «Интек» и «Зеленый мыс» — + 7 kindergarten; имя файла отличается от карты ниже). Все 5 целей §3.1 найдены в каноне (Brookes Early Years и дошкольные Cambridge — green-сущности с parent_id). Gate: ревью владельца.
 
 **Задачи:**
 
@@ -72,7 +73,7 @@ PYTHONPATH=src python -m radar.stage01_filter_registry
 | 3 | Кодировки: файлы в UTF-8, но поле `label` в CSV может содержать лишние кавычки | Использовать csv.DictReader с `quoting=csv.QUOTE_ALL` |
 | 4 | CSV с разделителем ',' — поле `address` может содержать запятые | reader обрабатывает это автоматически при правильных кавычках |
 
-**Gate (приёмка фазы 1):** владелец проверяет `data/schools_filtered.json`: в `included=true` — только школы, которые он ожидает видеть в мониторинге ✅
+**Gate (приёмка фазы 1):** владелец проверяет `data/schools_filtered.json`: в `included=true` — только школы, которые он ожидает видеть в мониторинге — ⏳ ожидает ревью владельца (2026-09-25)
 
 ---
 

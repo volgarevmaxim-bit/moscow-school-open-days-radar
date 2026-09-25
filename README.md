@@ -24,4 +24,4 @@ Python 3.11 · Telethon (upstream-чтение + downstream-отправка) ·
 
 ## Статус
 
-⏳ Готов к Этапу 1 (2026-09-25): upstream schools-map-mathex отрефакторен и верифицирован — канон `data/raw/entities.json` (84 сущности, blue=22, kind/kind_source у 100%). Снапшот обновлён (@4196161, upstream `bacc480`). Реестр v1 по букве ТЗ п.3.1 = 19 школ. Ждём «Приступаем» и ответы на вопросы 2–4 (DeepSeek / alter-ego / cron).
+🚧 Этап 1 выполнен (2026-09-25): `data/schools_filtered.json` — реестр v1, **19 школ** (канон 84 сущности: blue=22 − 3 ручных исключения ТЗ §3.1; 2 дошкольные цели исключений — green, отсеклись kind-фильтром). Сборка идемпотентна: `PYTHONPATH=src python -m radar.stage01_filter_registry`; backlog v2 — 60 не-blue школ (`backlog/v2_non_blue_schools.csv`). Ждём: ревью реестра владельцем (вкл. 4 международные школы) и ответы на вопросы 2–4 (DeepSeek / alter-ego / cron).

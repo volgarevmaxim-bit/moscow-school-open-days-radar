@@ -1,0 +1,647 @@
+[
+  {
+    "id": "лицей-1533-лит",
+    "name": "Лицей №1533 (ЛИТ)",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "бауманская-инженерная-школа-1580",
+    "name": "Бауманская инженерная школа №1580",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Бауманская инженерная школа №1580 in schools_content.table @830f792)",
+    "address": "балаклавский просп 6а",
+    "mathex_url": "https://mathex.ru/shkoly/1580-2/"
+  },
+  {
+    "id": "школа-интеллектуал",
+    "name": "Школа «Интеллектуал»",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "детский-сад-летово-кидс",
+    "name": "Детский сад «Летово Кидс»",
+    "included": false,
+    "kind": "green",
+    "reason": "kind=green, v1 monitors blue only"
+  },
+  {
+    "id": "летово",
+    "name": "Летово",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "manual review 2026-09-25: letovojunior.ru/t.me — приём заявок в 1 класс (2025/26 закрыт)",
+    "address": "раменский бул 1а стр 1",
+    "mathex_url": "https://mathex.ru/shkoly/letovo/"
+  },
+  {
+    "id": "школа-1535",
+    "name": "Школа №1535",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Школа №1535 in schools_content.table @830f792)",
+    "address": "усачева ул 50",
+    "mathex_url": "https://mathex.ru/shkoly/shkola-1535/"
+  },
+  {
+    "id": "московская-гимназия-на-юго-западе-1543-ю-в-завельского",
+    "name": "Московская гимназия на Юго-Западе №1543 им. Ю. В. Завельского",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "manual review 2026-09-25: schoolotzyv.ru — зачисление в 1 классы через mos.ru (по месту жительства)",
+    "address": "ул 26 бакинских комиссаров 3к 5",
+    "mathex_url": "https://mathex.ru/shkoly/shkola-1543/"
+  },
+  {
+    "id": "школа-179",
+    "name": "Школа №179",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "школа-2007",
+    "name": "Школа 2007",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "школа-57",
+    "name": "Школа №57",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Школа №57 in schools_content.table @830f792)",
+    "address": "малый знаменский пер 7/10с5",
+    "mathex_url": "https://mathex.ru/shkoly/skola-57/"
+  },
+  {
+    "id": "школа-центра-педагогического-мастерства-цпм",
+    "name": "Школа Центра педагогического мастерства (ЦПМ)",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "лицей-воробьевы-горы",
+    "name": "Лицей Воробьевы Горы",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "лицей-вторая-школа-в-ф-овчинникова",
+    "name": "Лицей «Вторая школа» им. В. Ф. Овчинникова",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "университетская-гимназия-мгу",
+    "name": "Университетская гимназия МГУ",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "школа-1568-пабло-неруды",
+    "name": "Школа 1568 имени Пабло Неруды",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "школа-1534",
+    "name": "Школа 1534",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "школа-1514",
+    "name": "Школа №1514",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Школа №1514 in schools_content.table @830f792)",
+    "address": "ул академика челомея 6а",
+    "mathex_url": "https://mathex.ru/shkoly/drugie-top-school/"
+  },
+  {
+    "id": "курчатовская-школа",
+    "name": "Курчатовская школа",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Курчатовская школа in schools_content.table @830f792)",
+    "address": "ул паршина 39",
+    "mathex_url": "https://mathex.ru/shkoly/drugie-top-school/"
+  },
+  {
+    "id": "силаэдр",
+    "name": "Силаэдр",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "абсолют",
+    "name": "Абсолют",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "вектор",
+    "name": "Вектор",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "колледж-xxi-века",
+    "name": "Колледж XXI века",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "лицей-экус",
+    "name": "Лицей ЭКУС",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "лотос",
+    "name": "Лотос",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "русская-школа",
+    "name": "Русская школа",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "самсон",
+    "name": "Самсон",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "солнечный-ветер",
+    "name": "Солнечный ветер",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "центр-образования-столичный",
+    "name": "Центр образования «Столичный»",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "академическая-гимназия",
+    "name": "Академическая гимназия",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "гимназия-святителя-василия-великого",
+    "name": "Гимназия Святителя Василия Великого",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "горчаковский-лицей-мгимо",
+    "name": "Горчаковский лицей МГИМО",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "древо-познаний",
+    "name": "Древо познаний",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "детский-сад-европейской-гимназии-в-сокольниках",
+    "name": "Детский сад Европейской гимназии в Сокольниках",
+    "included": false,
+    "kind": "green",
+    "reason": "kind=green, v1 monitors blue only"
+  },
+  {
+    "id": "европейская-гимназия",
+    "name": "Европейская гимназия",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:legacy-build_data.py BLUE\\GREEN (Европейская гимназия)",
+    "address": "ул сокольнический вал 28",
+    "mathex_url": null
+  },
+  {
+    "id": "детский-сад-и-начальная-школа-радуга-при-золотом-сечении",
+    "name": "Детский сад и начальная школа «Радуга» при «Золотом сечении»",
+    "included": false,
+    "kind": "green",
+    "reason": "kind=green, v1 monitors blue only"
+  },
+  {
+    "id": "школа-золотое-сечение",
+    "name": "Школа «Золотое сечение»",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:legacy-build_data.py BLUE\\GREEN (Золотое сечение)",
+    "address": "ленинский пр 13а",
+    "mathex_url": null
+  },
+  {
+    "id": "карьера",
+    "name": "Карьера",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "колибри",
+    "name": "Колибри",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "лидер",
+    "name": "Лидер",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "лидеры",
+    "name": "Лидеры",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "лучик",
+    "name": "Лучик",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "москвич",
+    "name": "Москвич",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "московский-лицей-ступени",
+    "name": "Московский лицей «Ступени»",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "муми-тролль",
+    "name": "Муми-Тролль",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "наследник",
+    "name": "Наследник",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "ника",
+    "name": "Ника",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "дошкольное-отделение-новой-школы",
+    "name": "Дошкольное отделение Новой школы",
+    "included": false,
+    "kind": "green",
+    "reason": "kind=green, v1 monitors blue only"
+  },
+  {
+    "id": "новая-школа",
+    "name": "Новая школа",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Новая школа in schools_content.table @830f792)",
+    "address": "мосфильмовская ул 88к5",
+    "mathex_url": null
+  },
+  {
+    "id": "областная-гимназия-е-м-примакова",
+    "name": "Областная гимназия имени Е. М. Примакова",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "областной-технолицей-в-и-долгих",
+    "name": "Областной технолицей имени В. И. Долгих",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "олимп-плюс",
+    "name": "Олимп-Плюс",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "сааш-марина",
+    "name": "СААШ «Марина»",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "феникс",
+    "name": "Феникс",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "британская-международная-школа",
+    "name": "Британская международная школа",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "школа-интеграция-xxi-век",
+    "name": "Школа «Интеграция XXI век»",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Школа «Интеграция XXI век» in schools_content.table @830f792)",
+    "address": "ул маршала катукова 16к1",
+    "mathex_url": null
+  },
+  {
+    "id": "ломоносовская-школа",
+    "name": "Ломоносовская школа",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Ломоносовская школа in schools_content.table @830f792)",
+    "address": "можайское ш 31к2",
+    "mathex_url": null
+  },
+  {
+    "id": "ломоносовская-школа-интек",
+    "name": "Ломоносовская школа «Интек»",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "ломоносовская-школа-зеленый-мыс",
+    "name": "Ломоносовская школа — Зеленый мыс",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "международная-гимназия-сколково",
+    "name": "Международная гимназия «Сколково»",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "наши-традиции",
+    "name": "Наши традиции",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "новый-взгляд",
+    "name": "Новый взгляд",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "павловская-гимназия",
+    "name": "Павловская гимназия",
+    "included": false,
+    "kind": "blue",
+    "reason": "manual exclusion"
+  },
+  {
+    "id": "первая-московская-гимназия",
+    "name": "Первая Московская гимназия",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "школа-президент",
+    "name": "Школа «Президент»",
+    "included": false,
+    "kind": "blue",
+    "reason": "manual exclusion"
+  },
+  {
+    "id": "сколка",
+    "name": "Сколка",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "снегири",
+    "name": "Снегири",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "детский-сад-хорошколы",
+    "name": "Детский сад Хорошколы",
+    "included": false,
+    "kind": "green",
+    "reason": "kind=green, v1 monitors blue only"
+  },
+  {
+    "id": "хорошкола",
+    "name": "Хорошкола",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Хорошкола in schools_content.table @830f792)",
+    "address": "ул народного ополчения 7а",
+    "mathex_url": null
+  },
+  {
+    "id": "школа-сотрудничества",
+    "name": "Школа Сотрудничества",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "дошкольные-группы-cambridge-international-school",
+    "name": "Дошкольные группы Cambridge International School",
+    "included": false,
+    "kind": "green",
+    "reason": "manual exclusion"
+  },
+  {
+    "id": "cambridge-international-school",
+    "name": "Cambridge International School",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:legacy-build_data.py BLUE\\GREEN (Cambridge International School)",
+    "address": "фестивальная ул 7а",
+    "mathex_url": null
+  },
+  {
+    "id": "heritage-international-school",
+    "name": "Heritage International School",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "russian-international-school",
+    "name": "Russian International School",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "wunderpark-international-school",
+    "name": "Wunderpark International School",
+    "included": false,
+    "kind": "blue",
+    "reason": "manual exclusion"
+  },
+  {
+    "id": "школа-548-царицыно",
+    "name": "Школа №548 «Царицыно»",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (Школа №548 «Царицыно» in schools_content.table @830f792)",
+    "address": "ереванская ул 33",
+    "mathex_url": null
+  },
+  {
+    "id": "лицей-ниу-вшэ",
+    "name": "Лицей НИУ ВШЭ",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "сунц-мгу",
+    "name": "СУНЦ МГУ",
+    "included": false,
+    "kind": "red",
+    "reason": "kind=red, v1 monitors blue only"
+  },
+  {
+    "id": "brookes-moscow-early-years-pre-nursery-и-nursery",
+    "name": "Brookes Moscow Early Years: Pre-Nursery и Nursery",
+    "included": false,
+    "kind": "green",
+    "reason": "manual exclusion"
+  },
+  {
+    "id": "brookes-moscow-international-school",
+    "name": "Brookes Moscow International School",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:legacy-build_data.py BLUE\\GREEN (Brookes Moscow)",
+    "address": "лазоревый проезд 7",
+    "mathex_url": null
+  },
+  {
+    "id": "английский-детский-сад-mcs-school",
+    "name": "Английский детский сад MCS School",
+    "included": false,
+    "kind": "green",
+    "reason": "kind=green, v1 monitors blue only"
+  },
+  {
+    "id": "mcs-school-magic-castle-school",
+    "name": "MCS School / Magic Castle School",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (MCS School / Magic Castle School in schools_content.table @830f792)",
+    "address": "пер чернышевского 4 стр 1",
+    "mathex_url": null
+  },
+  {
+    "id": "тор-it-school",
+    "name": "ТОР IT SCHOOL",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "rule:content-admission (ТОР IT SCHOOL in schools_content.table @830f792)",
+    "address": "ул покрышкина 8 к1",
+    "mathex_url": null
+  },
+  {
+    "id": "детский-сад-при-французском-лицее-а-дюма",
+    "name": "Детский сад при Французском лицее имени А. Дюма",
+    "included": false,
+    "kind": "green",
+    "reason": "kind=green, v1 monitors blue only"
+  },
+  {
+    "id": "французский-лицей-а-дюма-при-посольстве-франции-в-москве-lyc-e-fran-ais-alexandre-dumas",
+    "name": "Французский лицей имени А. Дюма при Посольстве Франции в Москве (Lycée français Alexandre Dumas)",
+    "included": true,
+    "kind": "blue",
+    "kind_match": "blue",
+    "kind_source": "manual review 2026-09-25: ucheba.ru — свободное поступление с 3 лет, траектория до выпуска",
+    "address": "милютинский пер 7а",
+    "mathex_url": null
+  }
+]
