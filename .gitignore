@@ -1,0 +1,18 @@
+# secrets & sessions
+.env
+*.session
+*.session-journal
+secrets/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# local state & outputs
+data/state/
+output/
+
+# agent handoff (локальный, вне git — конвенция physics-videos)
+HANDOFF.md
